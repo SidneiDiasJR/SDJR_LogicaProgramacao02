@@ -1,0 +1,44 @@
+<canvas width="600", height="400"></canvas>
+<script>
+	function ret(cor, largInic, altInic, largFin, altFin){
+		pincel.fillStyle = cor;
+		pincel.fillRect(largInic, altInic, largFin, altFin);
+	}
+	function triangulo(cor, x, y, altura, esquerda, direita){
+		pincel.fillStyle = cor;
+		pincel.beginPath();
+		pincel.moveTo(x, y);
+		pincel.lineTo(esquerda, altura);
+		pincel.lineTo(direita, altura);
+		pincel.fill();
+	}
+	function circulo(cor, x, y, raio){
+		pincel.fillStyle = cor;
+		pincel.beginPath();
+		pincel.arc(x, y, raio, 0, 2 * 3.14);
+		pincel.fill();
+	}
+
+	//Variáveis
+	var tela = document.querySelector('canvas');
+	var pincel = tela.getContext('2d');
+	
+	/*Bandeira HUezil
+	ret("green", 0, 0, 600, 400);
+	triangulo('yellow', 300, 50, 200, 50, 550);
+	triangulo('yellow', 300, 350, 200, 50, 550);
+	circulo("darkblue", 300, 200, 100)*/
+
+	/*Esquadro
+	triangulo("black", 50, 50, 400, 50, 400);
+	triangulo("white", 100, 175, 350, 100, 275);*/
+
+	/*Creeper
+	ret("darkgreen", 125, 0, 350, 300);
+	ret("black", 265, 150, 70, 100);
+	ret("black", 225, 190, 40, 110);
+	ret("black", 335, 190, 40, 110);
+	ret("black", 17	5, 60, 90, 90);
+	ret("black", 335, 60, 90, 90);*/
+
+</script>

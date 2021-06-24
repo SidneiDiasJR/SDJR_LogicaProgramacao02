@@ -1,0 +1,86 @@
+<meta charset="UTF-8">
+<canvas width = "600" height= "400"></canvas>
+<script>
+    /*var indo   = true;		
+		if(indo){
+			x++;
+			if(x>600){ indo = false; }
+		}else{
+			x--;
+			if(x<0){ indo = true; }
+		}*/
+	/*var batida = 1;
+	function pulsar(){
+		limpaTela();
+		circulo('darkred', x, y, raio);
+		if(raio>30){
+			batida = -1;
+		}else if(raio<20){
+			batida = 1;
+		}
+		raio += batida;
+	}*/
+	/*
+	function atualizarTela(){
+		limpaTela();
+		circulo('darkred', x, y, raio);
+	}*/
+	/*
+	var esquerda = 37;
+	var cima     = 38;
+	var direita  = 39;
+	var baixo    = 40;
+	var taxa = 10;
+	function leTeclado(evento){
+		if(evento.keyCode == esquerda && x>=40){ x-=taxa; }
+		else if(evento.keyCode == direita && x<=560){ x+=taxa; }
+		else if(evento.keyCode == cima && y>=40){ y-=taxa; }
+		else if(evento.keyCode == baixo && y<=360){ y+=taxa; }
+	}*/
+		//Variáveis
+	var tela   = document.querySelector('canvas');
+	var pincel = tela.getContext('2d');
+	var raio   = 10;
+	var x      = 570;
+	var y      = 30;
+	//Funções
+	function limpaTela(){
+		pincel.fillStyle = 'lightblue';
+		pincel.fillRect(0, 0, 600, 400);
+	}
+	function circulo(cor, x, y, raio){
+		pincel.fillStyle = cor;
+		pincel.beginPath();
+		pincel.arc(x, y, raio, 0, 2*Math.PI);
+		pincel.fill();
+	}
+	function dispara(evento){
+		var xMouse = evento.pageX - tela.offsetLeft;
+		var yMouse = evento.pageY - tela.offsetTop;
+		console.log('Mouse: ('+xMouse+', '+yMouse+')');
+		if ( ( xMouse >= x-raio && xMouse <= x+raio )
+			&& ( yMouse >= y-raio && yMouse <= y+raio ) ){
+			alert('Você acertou!');
+		}
+	}
+	function alvo(){
+		circulo('red', x, y, raio+20);
+		circulo('white', x, y, raio+10);	
+		circulo('red', x, y, raio);	
+		
+	}
+	function sorteiaCoordenadas(limiteX, limiteY){
+		x = Math.floor(Math.random()*limiteX);
+		y = Math.floor(Math.random()*limiteY);
+		console.log('Centro do alvo: ('+x+', '+y+')');
+	}
+	function atualizaTela(){
+		limpaTela();
+		sorteiaCoordenadas(600,400);
+		alvo();
+	}
+
+	tela.onclick = dispara;
+	setInterval(atualizaTela, 1000);
+
+</script>
